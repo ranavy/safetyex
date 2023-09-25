@@ -132,21 +132,28 @@ export default function FullFeaturedCrudGrid() {
   };
 
   const columns: GridColDef[] = [
-    { field: "name", headerName: "Name", width: 180, editable: true },
     {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      width: 80,
-      align: "left",
-      headerAlign: "left",
+      field: "Audit Date",
+      headerName: "Audit date",
+      type: "date",
+      width: 180,
       editable: true,
     },
     {
-      field: "joinDate",
-      headerName: "Join date",
-      type: "date",
+      field: "Area",
+      headerName: "Area",
+      width: 220,
+      editable: true,
+      type: "singleSelect",
+      valueOptions: ["OLHU", "OLCO", "OLPA"],
+    },
+    { field: "name", headerName: "Auditor", width: 180, editable: true },
+    {
+      field: "Type of audit",
+      headerName: "Type",
+      type: "singleSelect",
       width: 180,
+      valueOptions: ["Regular Audit", "Cross Audit"],
       editable: true,
     },
     {
@@ -155,7 +162,7 @@ export default function FullFeaturedCrudGrid() {
       width: 220,
       editable: true,
       type: "singleSelect",
-      valueOptions: ["Market", "Finance", "Development"],
+      valueOptions: ["OLHU", "OLCO", "OLPA"],
     },
     {
       field: "actions",
@@ -170,6 +177,7 @@ export default function FullFeaturedCrudGrid() {
           return [
             <GridActionsCellItem
               icon={<SaveIcon />}
+              key="save"
               label="Save"
               sx={{
                 color: "primary.main",
@@ -178,6 +186,7 @@ export default function FullFeaturedCrudGrid() {
             />,
             <GridActionsCellItem
               icon={<CancelIcon />}
+              key="Cancel"
               label="Cancel"
               className="textPrimary"
               onClick={handleCancelClick(id)}
@@ -189,6 +198,7 @@ export default function FullFeaturedCrudGrid() {
         return [
           <GridActionsCellItem
             icon={<EditIcon />}
+            key="edit"
             label="Edit"
             className="textPrimary"
             onClick={handleEditClick(id)}
@@ -196,6 +206,7 @@ export default function FullFeaturedCrudGrid() {
           />,
           <GridActionsCellItem
             icon={<DeleteIcon />}
+            key="Delete"
             label="Delete"
             onClick={handleDeleteClick(id)}
             color="inherit"
