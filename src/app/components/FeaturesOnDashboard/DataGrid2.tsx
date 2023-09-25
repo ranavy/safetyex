@@ -20,36 +20,11 @@ import {
   GridRowModel,
   GridRowEditStopReasons,
 } from "@mui/x-data-grid";
-import {
-  randomCreatedDate,
-  randomTraderName,
-  randomId,
-  randomArrayItem,
-} from "@mui/x-data-grid-generator";
 import AddResult from "./AddResult";
 import SubmitCardAtRoot from "./SubmitCardAtRoot";
 
-const roles = ["Market", "Finance", "Development"];
-const randomRole = () => {
-  return randomArrayItem(roles);
-};
-
-const initialRows: GridRowsProp = [
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 25,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-  {
-    id: randomId(),
-    name: randomTraderName(),
-    age: 36,
-    joinDate: randomCreatedDate(),
-    role: randomRole(),
-  },
-];
+// TODO: Fetch the initial rows from MongoDB here
+const initialRows: GridRowsProp = [];
 
 interface EditToolbarProps {
   setRows: (newRows: (oldRows: GridRowsProp) => GridRowsProp) => void;
@@ -62,12 +37,7 @@ function EditToolbar(props: EditToolbarProps) {
   const { setRows, setRowModesModel } = props;
 
   const handleClick = () => {
-    const id = randomId();
-    setRows((oldRows) => [...oldRows, { id, name: "", age: "", isNew: true }]);
-    setRowModesModel((oldModel) => ({
-      ...oldModel,
-      [id]: { mode: GridRowModes.Edit, fieldToFocus: "name" },
-    }));
+    // TODO: Add logic to add a new row (if necessary)
   };
 
   return (
@@ -87,6 +57,8 @@ export default function FullFeaturedCrudGrid() {
   const [rowModesModel, setRowModesModel] = React.useState<GridRowModesModel>(
     {}
   );
+
+  // TODO: Use the useEffect hook to fetch data from MongoDB when the component mounts
 
   const handleRowEditStop: GridEventListener<"rowEditStop"> = (
     params,
@@ -133,7 +105,14 @@ export default function FullFeaturedCrudGrid() {
 
   const columns: GridColDef[] = [
     {
-      field: "Audit Date",
+      field: "NoItem",
+      headerName: "No.",
+      type: "number",
+      width: 20,
+      editable: true,
+    },
+    {
+      field: "AuditDate",
       headerName: "Audit date",
       type: "date",
       width: 180,
@@ -149,7 +128,7 @@ export default function FullFeaturedCrudGrid() {
     },
     { field: "name", headerName: "Auditor", width: 180, editable: true },
     {
-      field: "Type of audit",
+      field: "TypeOfaudit",
       headerName: "Type",
       type: "singleSelect",
       width: 180,
