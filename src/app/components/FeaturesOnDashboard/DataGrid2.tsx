@@ -42,11 +42,6 @@ function EditToolbar(props: EditToolbarProps) {
 
   return (
     <div>
-      <GridToolbarContainer>
-        <Button color="primary" startIcon={<AddIcon />} onClick={handleClick}>
-          Submit audit result
-        </Button>
-      </GridToolbarContainer>
       <SubmitCardAtRoot></SubmitCardAtRoot>
     </div>
   );

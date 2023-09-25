@@ -13,7 +13,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
-import SummarizeIcon from '@mui/icons-material/Summarize';
+import SummarizeIcon from "@mui/icons-material/Summarize";
 const pages = ["Menu1", "Menu2", "Menu3", "Menu4", "Menu5", "Menu6"];
 const settings = ["Profile", "Dashboard", "Logout"];
 
